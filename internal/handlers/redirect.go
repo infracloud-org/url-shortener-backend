@@ -8,7 +8,7 @@ import (
 )
 
 func RedirectURL(ctx echo.Context) error {
-	shortCode := ctx.Param("shortenCode")
+	shortCode := ctx.Param("shortCode")
 
 	originalURL, err := Shortener.ExpandURL(shortCode)
 	if err != nil {
