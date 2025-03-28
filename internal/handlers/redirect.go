@@ -3,6 +3,7 @@ package handlers
 import (
 	"fmt"
 	"net/http"
+	"strings"
 
 	"github.com/labstack/echo/v4"
 )
@@ -15,5 +16,6 @@ func RedirectURL(ctx echo.Context) error {
 		return ctx.JSONBlob(http.StatusBadRequest, []byte(fmt.Sprintf(`{ "error": %s }`, err.Error())))
 	}
 
-	return ctx.Redirect(http.StatusFound, originalURL)
+	originalURL = strings.Trim(originalURL, `"`)
+	return ctx.JSON(http.StatusOK, originalURL)
 }

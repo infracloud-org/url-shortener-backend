@@ -15,5 +15,5 @@ func main() {
 	handlers.Analytics = service.NewAnalytics(storage)
 
 	e := rest.NewRouter()
-	log.Fatal(e.Start(":9090"))
+	log.Fatal(e.Start("0.0.0.0:9090"))
 }

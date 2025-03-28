@@ -1,6 +1,7 @@
 package service
 
 import (
+	"fmt"
 	"sort"
 	"url-shortener/internal/storage"
 )
@@ -32,8 +33,10 @@ func (a *Analytics) GetTopNDomains(n int) []string {
 
 	var topDomains []string
 	for idx := 0; idx < n && idx < len(domainsList); idx++ {
-		topDomains = append(topDomains, domainsList[idx].domain)
+		topDomains = append(topDomains, fmt.Sprintf("%s: %d", domainsList[idx].domain, domainsList[idx].cnt))
 	}
+
+	fmt.Println(topDomains)
 
 	return topDomains
 }
